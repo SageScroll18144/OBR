@@ -1,22 +1,26 @@
+void set_velocity(int motor, int pwm){
+  analogWrite(vel[motor], pwm);
+}
+
 void motors(int motor, char sen){//1o -> motor 0; 2o -> motor1; 3o -> motor 2; 4o -> motor 3
-    if(sen == 'F'){
-        digitalWrite(dir[motor*2], HIGH);
-        digitalWrite(dir[(motor*2)+1], LOW);  
-    }
-    else if(sen == 'B'){
-        digitalWrite(dir[motor*2], LOW);
-        digitalWrite(dir[(motor*2)+1], HIGH);
-    }
+  if(sen == 'F'){
+      digitalWrite(dir[motor*2], HIGH);
+      digitalWrite(dir[(motor*2)+1], LOW);  
+  }
+  else if(sen == 'B'){
+      digitalWrite(dir[motor*2], LOW);
+      digitalWrite(dir[(motor*2)+1], HIGH);
+  }
 }
 void stopRobot(int motor){
-    digitalWrite(dir[motor*2], LOW);
-    digitalWrite(dir[(motor*2)+1], LOW);  
+  digitalWrite(dir[motor*2], LOW);
+  digitalWrite(dir[(motor*2)+1], LOW);  
 }
 //faz o robo seguir em frente
 void forward(){
-    for(int i = 0; i < 4; i++){
-        motors(i, 'F');
-    }
+  for(int i = 0; i < 4; i++){
+      motors(i, 'F');
+  }
 }
 //faz o robo seguir na diagonal informada
 void diagonal(char sen, char SenMotors){
@@ -31,22 +35,21 @@ void diagonal(char sen, char SenMotors){
 }
 //faz o robo gira para a esquerda ou para a direita
 void spinRobot(char sen){
-    if(sen == 'L'){
-        for(int i = 0; i < 2; i++){
-            motors(i, 'B');
-        }
-        for(int i = 2; i < 4; i++){
-            motors(i, 'F');
-        }
-    }
-    else if (sen == 'R')
-    {
-        for(int i = 0; i < 2; i++){
-            motors(i, 'F');
-        }
-        for(int i = 2; i < 4; i++){
-            motors(i, 'B');
-        }
-    }
-        
+  if(sen == 'L'){
+      for(int i = 0; i < 2; i++){
+          motors(i, 'B');
+      }
+      for(int i = 2; i < 4; i++){
+          motors(i, 'F');
+      }
+  }
+  else if (sen == 'R')
+  {
+      for(int i = 0; i < 2; i++){
+          motors(i, 'F');
+      }
+      for(int i = 2; i < 4; i++){
+          motors(i, 'B');
+      }
+  }        
 }

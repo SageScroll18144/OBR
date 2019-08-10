@@ -22,21 +22,22 @@ void OnOff(){
   }
 }
 void desvio(){
+  stopRobot(0);stopRobot(1);stopRobot(2);stopRobot(3);
+  delay(50);
   for(int i = 0; i < sizeof(vel)/sizeof(int); i++){
     set_velocity(i, V_MAX/2);
   }
-  if(ultrassonicRead(0) < 7){
-    diagonal('L','F');
-    while(1){
-      if(ultrassonicRead(1) < 15){
-        forward();
-        if(ultrassonicRead(1) > 15){
-          diagonal('R','F');
-          if(readAnRight() > 900){break;}
-        }
+  diagonal('L','F');
+  while(1){
+    //ultrassonico que está posicionado a direita em relação a frente do robô
+    if(ultrassonicRead(1) < 15){
+      forward();
+      if(ultrassonicRead(1) > 15){
+        diagonal('R','F');
+        if(readAnRight() > 900){break;}
       }
     }
-    stopRobot(0);stopRobot(1);stopRobot(2);stopRobot(3);
-    delay(500);
   }
+  stopRobot(0);stopRobot(1);stopRobot(2);stopRobot(3);
+  delay(500);
 }

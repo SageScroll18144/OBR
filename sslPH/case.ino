@@ -3,7 +3,7 @@
 void PID(){
   pid_update(readAnLeft(), readAnRight());
   float controle = pid_actuation(1.0, 1.0, 1.0);
-  //faltar continuar ksksks
+  //falta continuar ksksks
 }
 
 
@@ -32,10 +32,10 @@ void desvio(){
     //ultrassonico que está posicionado a direita em relação a frente do robô
     if(ultrassonicRead(1) < 15){
       forward();
-      if(ultrassonicRead(1) > 15){
+    }
+    else if(ultrassonicRead(1) > 15){
         diagonal('R','F');
         if(readAnRight() > 900){break;}
-      }
     }
   }
   stopRobot(0);stopRobot(1);stopRobot(2);stopRobot(3);

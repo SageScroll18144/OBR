@@ -31,8 +31,7 @@ void setup(){
       pinMode(dir[i], OUTPUT);
   }
   Serial.begin(9600);
-
-    
+ 
   for(int i = 0; i < sizeof(ultPin)/sizeof(int); i++){
       if (i > 1)
         pinMode(ultPin[i], INPUT);

@@ -37,17 +37,18 @@ void colorLeft()
 }
 int readRGBLeft(){
   colorLeft();
-  if((green + red + blue) > 75){//Verifica se a cor preta foi detectada
+  if ((green + red + blue) < 45 && (green + red + blue)> 25)//Verifica se a cor verde foi detectada
+  {
+    return 2;//VERDE
+  }
+  else if((green + red + blue) > 75){//Verifica se a cor preta foi detectada
     return 0;//PRETO
   }
   else if ((green + red + blue) < 25 )//Verifica se a cor branca foi detectada
   {
     return 1;//BRANCO
   }
-  else if ((green + red + blue) < 45 && (green + red + blue)> 25)//Verifica se a cor verde foi detectada
-  {
-    return 2;//VERDE
-  }
+  
 }
 
 void colorRight()
@@ -66,15 +67,16 @@ void colorRight()
 }
 int readRGBRight(){
   colorRight();
-  if((green1 + red1 + blue1) > 75){//Verifica se a cor preta foi detectada
+  if ((green1 + red1 + blue1) < 45 && (green1 + red1 + blue1 )> 25)//Verifica se a cor verde foi detectada
+  {
+    return 2;//VERDE
+  }
+  else if((green1 + red1 + blue1) > 75){//Verifica se a cor preta foi detectada
     return 0;//PRETO
   }
   else if ((green1 + red1 + blue1) < 25 )//Verifica se a cor branca foi detectada
   {
     return 1;//BRANCO
   }
-  else if ((green1 + red1 + blue1) < 45 && (green1 + red1 + blue1 )> 25)//Verifica se a cor verde foi detectada
-  {
-    return 2;//VERDE
-  }
+  
 }

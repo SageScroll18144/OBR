@@ -41,6 +41,6 @@ void setup(){
 }
 
 void loop(){
-   pid_update(readAnLeft(), readAnRight());
+  pid_update(readAnLeft(), readAnRight());
   Serial.println(pid_actuation(1.0, 1.0, 1.0));
 }

@@ -1,7 +1,3 @@
-void set_velocity(int motor, int pwm){
-  analogWrite(vel[motor], pwm);
-}
-
 void motors(int motor, char sen){//1o -> motor 0; 2o -> motor1; 3o -> motor 2; 4o -> motor 3
   if(sen == 'F'){
       digitalWrite(dir[motor*2], HIGH);

@@ -1,5 +1,4 @@
 //MOTORES
-int vel[] = {0,0,0,0};//pinos de velocidade dos motores(PWMs){m0,m1,m2,m3}
 int dir[] = {51,53,45,43,41,39,47,49};//pinos de direção dos motores
 
 //ULTRASSONICO
@@ -42,7 +41,5 @@ void setup(){
 }
 
 void loop(){
-  unsigned int sensor_1 = readAnLeft();
-  float normal_l = pid_normalize(sensor_1);
-  Serial.println(normal_l);
+  Serial.println(pid_actuation(1.0, 1.0, 1.0));
 }

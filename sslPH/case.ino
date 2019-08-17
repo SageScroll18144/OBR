@@ -1,15 +1,19 @@
-#define V_MAX 255
-
-void PID(){
+void PID(float limite){
   pid_update(readAnLeft(), readAnRight());
-  float controle = pid_actuation(1.0, 1.0, 1.0);
-  //falta continuar ksksks
+  float x = pid_actuation(1.0, 1.0, 1.0);
+  if(abs(x > limite)){
+    if(x < 0){
+      spinRobot('L');
+    }else{
+      spinRobot('R');
+    }
+  }
+  else{
+    forward();
+  }
 }
 
 void OnOff(){
-  for(int i = 0; i < sizeof(vel)/sizeof(int); i++){
-    set_velocity(i, V_MAX);
-  }
   if(readAnRight() > 900 && readAnLeft() < 900){
     spinRobot('R'); 
   }
@@ -24,9 +28,6 @@ void OnOff(){
 void desvio(){
   stopRobot(0);stopRobot(1);stopRobot(2);stopRobot(3);
   delay(50);
-  for(int i = 0; i < sizeof(vel)/sizeof(int); i++){
-    set_velocity(i, V_MAX/2);
-  }
   diagonal('L','F');
   delay(1000);
   while(1){
@@ -44,10 +45,6 @@ void desvio(){
 }
 
 void resgate(int dimensao){
-  for(int i = 0; i < 4; i++)
-  {
-    set_velocity(1,V_MAX/2);
-  }
   if(ultrassonicRead(1) > dimensao - 5 && ultrassonicRead(0) < 3){
     area_de_resgate();
   }

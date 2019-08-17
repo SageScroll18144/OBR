@@ -49,3 +49,13 @@ void spinRobot(char sen){
       }
   }        
 }
+void giro_de_noventa_green(char sen){
+  forward();
+  delay(300);
+  spinRobot(sen);
+  delay(750);
+  for(int i = 0;i<4; i++){
+    stopRobot(i);
+  }
+}
+}

@@ -43,4 +43,7 @@ void setup(){
 void loop(){
   pid_update(readAnLeft(), readAnRight());
   Serial.println(pid_actuation(1.0, 1.0, 1.0));
+  if(ultrassonicRead(0) < 10){
+   desvio();
+  }
 }

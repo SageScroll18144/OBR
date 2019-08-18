@@ -4,7 +4,7 @@ int dir[] = {51,53,45,43,41,39,47,49};//pinos de direção dos motores
 //ULTRASSONICO
 //int trig = 5;
 //int echo = 6;
-int ultPin[] = {5,0,6,0};//trig;trig;echo;echo
+int ultPin[] = {5,34,6,36};//trig;trig;echo;echo
 
 //RGB
 //s0; s1; s2; s3; out -> Pino digital || gnd -> gnd || vcc -> 5v

@@ -38,6 +38,7 @@ float pid_prop() {
 
 // Derivada dp pid, equivalente a velocidade em que a linha se move.
 float pid_derivada() {
+  if(ERRO[1] == 0.0f) return ERRO[0];
   return ERRO[0]/ERRO[1];
 }
 
@@ -50,7 +51,7 @@ float pid_integral() {
     erro_ac += ERRO[i];
   }
 
-  return erro_ac;
+  return erro_ac/ (float)ERROR_LENGTH;
 }
 
 float pid_normalize(unsigned int data) {

@@ -1,16 +1,15 @@
 void PID(float limite){
-  pid_update(readAnLeft(), readAnRight());
-  float x = pid_actuation(1.0, 1.0, 1.0);
-  if(abs(x > limite)){
-    if(x < 0){
-      spinRobot('L');
-    }else{
-      spinRobot('R');
-    }
-  }
-  else{
-    forward();
-  }
+ pid_update(readAnLeft(), readAnRight());
+ float x = pid_actuation(3.0, 5.0, 2.0);
+ if(x < 3.90){
+   spinRobot('L');
+ }
+ else if(x > 5.55){
+   spinRobot('R');
+ }
+ else if(3.90 < x < 5.55){
+   forward();
+ }
 }
 
 void OnOff(){

@@ -41,9 +41,15 @@ void setup(){
 }
 
 void loop(){
-  pid_update(readAnLeft(), readAnRight());
-  Serial.println(pid_actuation(1.0, 1.0, 1.0));
-  if(ultrassonicRead(0) < 10){
-   desvio();
-  }
+ pid_update(readAnLeft(), readAnRight());
+ float x = pid_actuation(3.0, 5.0, 2.0);
+ if(x < 3.90){
+   spinRobot('L');
+ }
+ else if(x > 5.55){
+   spinRobot('R');
+ }
+ else if(3.90 < x < 5.55){
+   forward();
+ }
 }

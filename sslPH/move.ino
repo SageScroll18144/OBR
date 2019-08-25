@@ -18,6 +18,11 @@ void forward(){
       motors(i, 'F');
   }
 }
+void backward(){
+  for(int i = 0; i < 4; i++){
+      motors(i, 'B');
+  }
+}
 //faz o robo seguir na diagonal informada
 void diagonal(char sen, char SenMotors){
   if(sen == 'R'){
@@ -56,5 +61,38 @@ void giro_de_noventa_green(char sen){
   delay(750);
   for(int i = 0;i<4; i++){
     stopRobot(i);
+  }
+}
+void spinSuave(char sen){
+  if(sen ==  'R'){
+     motors(0, 'F'); 
+     motors(1, 'F'); 
+     stopRobot(2);
+     stopRobot(3);
+  }else if(sen == 'L'){
+     motors(3, 'F'); 
+     motors(2, 'F'); 
+     stopRobot(1);
+     stopRobot(0);
+  }
+}
+void go_right(){
+  for(int i = 0; i < 4; i++){
+    if((i%2) == 0){
+      motors(i, 'B');
+    }
+    else{
+      motors(i, 'F');
+    }
+  }
+}
+void go_left(){
+  for(int i = 0; i < 4; i++){
+    if((i%2) == 0){
+      motors(i, 'F');
+    }
+    else{
+      motors(i, 'B');
+    }
   }
 }

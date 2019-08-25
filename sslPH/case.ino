@@ -1,4 +1,4 @@
-void PID(float limite){
+void PID(){
  pid_update(readAnLeft(), readAnRight());
  float x = pid_actuation(3.0, 5.0, 2.0);
  if(x < 3.90){
@@ -56,38 +56,29 @@ void desvio_teste(){
   stopRobot(0);stopRobot(1);stopRobot(2);stopRobot(3);
   delay(500);
 }
-void resgate(int dimensao){
-  if(ultrassonicRead(1) > dimensao - 5 && ultrassonicRead(0) < 3){
-    area_de_resgate();
-  }
-
-  else if (ultrassonicRead(1) < dimensao) {
-    spinRobot('R');
-    delay(850);
-    while(ultrassonicRead(0) > 5){
-      forward();
+void resgate(int dimensaoX, int dimensaoY){
+  while(1){
+    go_right();
+    if(ultrassonicRead(0) <= dimensaoY - 5){
+      get_the_ball();
     }
-    get_the_ball();
-    spinRobot('L');
-    delay(1500);
-    while(ultrassonicRead(0) > 5){
-      forward();
-    }
-    spinRobot('R');
-    delay(850);
-  }
-  
-  else{
-    forward();
+    else if(ultrassonicRead(1) >= dimensaoX - 5){
+      break;
+    } 
   }
 
 }
 void get_the_ball(){
 
-  //captura
-  
+  forward();
+  if(ultrassonicRead(0) < 10){
+    for(int i = 0; i < 4; i++){
+      stopRobot(i);
+    }
+    //captura
+    backward();
+  }  
 }
 void area_de_resgate(){
-
   //procura e joga as vitimas na area de resgate
 }

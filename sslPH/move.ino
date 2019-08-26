@@ -96,3 +96,15 @@ void go_left(){
     }
   }
 }
+void retorno(){
+  spinRobot('L');
+  delay(750);
+  for(int i = 0;i<4; i++){
+    stopRobot(i);
+  }
+  spinRobot('L');
+  delay(720);
+  for(int i = 0;i<4; i++){
+    stopRobot(i);
+  }
+}

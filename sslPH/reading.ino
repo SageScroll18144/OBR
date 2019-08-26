@@ -14,7 +14,7 @@ int ultrassonicRead(int sensor){//Retorna um valor inteiro com o valor da distâ
   digitalWrite(ultPin[0+sensor], HIGH);
   delayMicroseconds(10);
   digitalWrite(ultPin[0+sensor], LOW);
-  duracao = pulseIn(ultPin[2+sensor], HIGH);
+  duracao = pulseIn(ultPin[3+sensor], HIGH);
   distancia = duracao/58;
   
   return distancia;

@@ -1,10 +1,12 @@
+#include "SparkFun_MMA8452Q.h"
+
 //MOTORES
 int dir[] = {51,53,45,43,41,39,47,49};//pinos de direção dos motores
 
 //ULTRASSONICO
 //int trig = 5;
 //int echo = 6;
-int ultPin[] = {5,34,6,36};//trig;trig;echo;echo
+int ultPin[] = {5,34,0,6,36,0};//trig;trig;trig;echo;echo;echo
 
 //RGB
 //s0; s1; s2; s3; out -> Pino digital || gnd -> gnd || vcc -> 5v
@@ -25,6 +27,9 @@ int blue1 = 0;
 */
 //CONSTANTES
 #define RB 600 // Valor lido pelo sensor analógico
+
+MMA8452Q accel;  
+
 void setup(){
   for(int i = 0; i < sizeof(dir)/sizeof(int); i++){
       pinMode(dir[i], OUTPUT);
@@ -37,6 +42,8 @@ void setup(){
       else
         pinMode(ultPin[i], OUTPUT);
   }
+  accel.init();
+  acl_init();
 
 }
 

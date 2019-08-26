@@ -1,15 +1,25 @@
 void PID(){
  pid_update(readAnLeft(), readAnRight());
  float x = pid_actuation(3.0, 5.0, 2.0);
- if(x < 3.90){
+ if(readRGBRight() == 2 && readRGBLeft() == 2){
+  retorno();
+ }
+ else if(readRGBRight() == 2){
+  spinSuave('R');
+ }
+ else if(readRGBLeft() == 2){
+  spinSuave('L');
+ }
+ else if(3.90 < x < 5.55){
+   forward();
+ }
+ else if(x < 3.90){
    spinRobot('L');
  }
  else if(x > 5.55){
    spinRobot('R');
  }
- else if(3.90 < x < 5.55){
-   forward();
- }
+ 
 }
 
 void OnOff(){

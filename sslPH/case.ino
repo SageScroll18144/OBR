@@ -1,5 +1,5 @@
 void PID(int esquerda, int direita){
- pid_update(irs[2], irs[5]);
+ pid_update(analogRead(irs[2]), analogRead(irs[5]));
  float x = pid_actuation(3.0, 5.0, 2.0);
  if(readRGBRight() == 2 && readRGBLeft() == 2){
   retorno();

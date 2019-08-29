@@ -1,5 +1,5 @@
-void PID(){
- pid_update(readAnLeft(), readAnRight());
+void PID(int esquerda, int direita){
+ pid_update(irs[2], irs[5]);
  float x = pid_actuation(3.0, 5.0, 2.0);
  if(readRGBRight() == 2 && readRGBLeft() == 2){
   retorno();
@@ -10,15 +10,17 @@ void PID(){
  else if(readRGBLeft() == 2){
   spinSuave('L');
  }
- else if(3.90 < x < 5.55){
-   forward();
- }
- else if(x < 3.90){
+ else if(x < esquerda || digitalRead(irs[1]) == 0){
    spinRobot('L');
  }
- else if(x > 5.55){
+ else if(x > direita || digitalRead(irs[6]) == 0){
    spinRobot('R');
  }
+ else if(esquerda < x < direita){
+   forward();
+ }
+ 
+ 
  
 }
 

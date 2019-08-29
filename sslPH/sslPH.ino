@@ -1,16 +1,18 @@
 #include "SparkFun_MMA8452Q.h"
 
 //MOTORES
-int dir[] = {51,53,45,43,41,39,47,49};//pinos de direção dos motores
+const int dir[] = {51,53,45,43,41,39,47,49};//pinos de direção dos motores
 
 //ULTRASSONICO
 //int trig = 5;
 //int echo = 6;
-int ultPin[] = {5,34,0,6,36,0};//trig;trig;trig;echo;echo;echo
+const int ultPin[] = {5,34,0,6,36,0};//trig;trig;trig;echo;echo;echo
 
 //RGB
 //s0; s1; s2; s3; out -> Pino digital || gnd -> gnd || vcc -> 5v
 const int rgbs[] = {2,3,26,24,28,8,9,11,12,10}; //s0 s1 s2 s3 out 
+
+const int irs[] = {A8,A9,A10,A11,A12,A13,A14,A15};
 
 int red = 0;
 int green = 0;
@@ -37,7 +39,7 @@ void setup(){
   Serial.begin(9600);
  
   for(int i = 0; i < sizeof(ultPin)/sizeof(int); i++){
-      if (i > 1)
+      if (i > 2)
         pinMode(ultPin[i], INPUT);
       else
         pinMode(ultPin[i], OUTPUT);
@@ -48,5 +50,5 @@ void setup(){
 }
 
 void loop(){
- PID();
+ PID(0,0);
 }

@@ -61,3 +61,6 @@ float pid_normalize(unsigned int data) {
 
   return 1.0f - normalizado;
 }
+float err(){
+  return ERRO[0];
+}

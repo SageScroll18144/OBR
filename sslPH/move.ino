@@ -1,3 +1,6 @@
+void set_velocity(int motor, int vel){
+  analogWrite(motores[motor], vel);
+}
 void motors(int motor, char sen){//1o -> motor 0; 2o -> motor1; 3o -> motor 2; 4o -> motor 3
   if(sen == 'F'){
       digitalWrite(dir[motor*2], HIGH);
@@ -76,7 +79,7 @@ void spinSuave(char sen){
      stopRobot(0);
   }
 }
-void go_right(){
+void go_left(){
   for(int i = 0; i < 4; i++){
     if((i%2) == 0){
       motors(i, 'B');
@@ -86,7 +89,7 @@ void go_right(){
     }
   }
 }
-void go_left(){
+void go_right(){
   for(int i = 0; i < 4; i++){
     if((i%2) == 0){
       motors(i, 'F');
@@ -104,6 +107,13 @@ void retorno(){
   }
   spinRobot('L');
   delay(720);
+  for(int i = 0;i<4; i++){
+    stopRobot(i);
+  }
+}
+void ninety(char sen){
+  spinRobot(sen);
+  delay(750);
   for(int i = 0;i<4; i++){
     stopRobot(i);
   }

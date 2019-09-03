@@ -1,5 +1,5 @@
 #include "SparkFun_MMA8452Q.h"
-#define IR_F 10
+#define IR_F A3
 //MOTORES
 const int dir[] = {51,53,45,43,41,39,47,49};//pinos de direção dos motores
 const int motores[] = {A1,A2,A6,A7};
@@ -57,26 +57,14 @@ void setup(){
 }
 
 void loop(){
-
-//PIDD(3.9,6.7,2.1,7.5);
-//OnOff();
- // PID_VEL(7,2,5);
-  //PID(3.9,6.7);
-//Serial.println(ultrassonicRead(0));
- /*pid_update(analogRead(irs[2]), analogRead(irs[5]));
- float x = pid_actuation(3.0, 5.0, 2.0);
- Serial.print(x);
- Serial.print("\t");
-  Serial.println(err());*/
-
  
  /** CODE 
-  if(ultrassonicRead(0) < 10){
+  if(ultrassonicRead(0) < 2){
     desvio();
   }
   else{
     PIDD();
   }*/
-
+  PID(5);
   Serial.println(ultrassonicRead(0));
 }
